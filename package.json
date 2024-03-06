@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "express": "^4.18.3",
+    "mysql2": "^3.9.2"
+  },
+  "name": "backend-1",
+  "type": "module",
+  "description": "Backend do cadastro de eventos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoRong1/backend.git"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "Leo Rong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoRong1/backend/issues"
+  },
+  "homepage": "https://github.com/LeoRong1/backend#readme"
+}
