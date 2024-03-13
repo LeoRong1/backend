@@ -57,7 +57,7 @@ export default class EventoDAO{
             nome = "";
         }
         let sql = "";
-        if (isNaN(nome)){
+        if (isNaN(parseInt(nome))){
             sql = `SELECT * FROM evento WHERE nome LIKE ?`;
             nome = '%' + nome + '%';
         }
