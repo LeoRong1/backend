@@ -10,8 +10,9 @@ export default class Evento{
     #hora;
     #preco;
     #local;
+    #imagem;
 
-    constructor(codigo=0, nome="", sinopse="", genero="", duracao="", data=new Date(), hora="", preco=0.00, local="") {
+    constructor(codigo=0, nome="", sinopse="", genero="", duracao="", data=new Date(), hora="", preco=0.00, local="", imagem="") {
         this.#codigo = codigo;
         this.#nome = nome;
         this.#sinopse = sinopse;
@@ -21,6 +22,8 @@ export default class Evento{
         this.#hora = hora;
         this.#preco = preco;
         this.#local = local;
+        this.#imagem = imagem;
+
     }
 
     get codigo(){
@@ -95,6 +98,14 @@ export default class Evento{
         this.#local = novoLocal;
     }
 
+    get imagem(){
+        return this.#imagem;
+    }
+
+    set imagem(novaImagem){
+        this.#imagem = novaImagem;
+    }
+
     async gravar(){
         const dao = new EventoDAO();
         await dao.gravar(this);
@@ -129,7 +140,8 @@ export default class Evento{
             "data": this.#data,
             "hora": this.#hora,
             "preco": this.#preco,
-            "local": this.#local
+            "local": this.#local,
+            "imagem": this.#imagem
         }
     }
 }

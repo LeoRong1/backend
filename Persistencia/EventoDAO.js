@@ -5,26 +5,7 @@ export default class EventoDAO{
     async gravar(evento){
         if (evento instanceof Evento){
             const conexao = await conectar();
-            const sql = `INSERT INTO evento (nome, sinopse, genero, duracao, data, hora, preco, local) values (?, ?, ?, ?, ?, ?, ?, ?)`;
-            const parametros = [
-                evento.nome,
-                evento.sinopse,
-                evento.genero,
-                evento.duracao,
-                evento.data,
-                evento.hora,
-                evento.preco,
-                evento.local
-            ];
-            const [resultados, campos] = await conexao.execute(sql, parametros);
-            evento.codigo = resultados.insertId;
-        }
-    }
-
-    async atualizar(evento){
-        if(evento instanceof Evento){
-            const conexao = await conectar();
-            const sql = `UPDATE evento SET nome = ?, sinopse = ?, genero = ?, duracao = ?, data = ?, hora = ?, preco = ?, local = ? WHERE id = ?`;
+            const sql = `INSERT INTO evento (nome, sinopse, genero, duracao, data, hora, preco, local, imagem) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
             const parametros = [
                 evento.nome,
                 evento.sinopse,
@@ -34,6 +15,27 @@ export default class EventoDAO{
                 evento.hora,
                 evento.preco,
                 evento.local,
+                evento.imagem
+            ];
+            const [resultados, campos] = await conexao.execute(sql, parametros);
+            evento.codigo = resultados.insertId;
+        }
+    }
+
+    async atualizar(evento){
+        if(evento instanceof Evento){
+            const conexao = await conectar();
+            const sql = `UPDATE evento SET nome = ?, sinopse = ?, genero = ?, duracao = ?, data = ?, hora = ?, preco = ?, local = ?,imagem = ? WHERE id = ?`;
+            const parametros = [
+                evento.nome,
+                evento.sinopse,
+                evento.genero,
+                evento.duracao,
+                evento.data,
+                evento.hora,
+                evento.preco,
+                evento.local,
+                evento.imagem,
                 evento.codigo
             ];
             await conexao.execute(sql,parametros);
@@ -78,7 +80,8 @@ export default class EventoDAO{
                 registro.data,
                 registro.hora,
                 registro.preco,
-                registro.local
+                registro.local,
+                registro.imagem
             );
             listaEventos.push(evento);
         }

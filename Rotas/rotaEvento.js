@@ -5,7 +5,7 @@ const rotaEvento = Router();
 const evenControle = new EventoControle;
 
 rotaEvento.get('/', evenControle.consultar)
-.get('/:nome', evenControle.consultar)
+.get('/:codigo', evenControle.consultar)
 .post('/', evenControle.gravar)
 .put('/:codigo', evenControle.atualizar)
 .patch('/:codigo', evenControle.atualizar)

@@ -15,9 +15,10 @@ export default class EventoControle {
             const hora = dados.hora;
             const preco = dados.preco;
             const local = dados.local;
+            const imagem = dados.imagem;
             
-            if(nome && sinopse && genero && duracao && data && hora && preco && local){
-                const evento = new Evento(0, nome, sinopse, genero, duracao, data, hora, preco, local);
+            if(nome && sinopse && genero && duracao && data && hora && preco && local && imagem){
+                const evento = new Evento(0, nome, sinopse, genero, duracao, data, hora, preco, local, imagem);
                 evento.gravar().then(() =>{
                     resposta.status(201)
                     resposta.json({
@@ -66,8 +67,9 @@ export default class EventoControle {
             const hora = dados.hora;
             const preco = dados.preco;
             const local = dados.local;
-            if(codigo && codigo > 0 && nome && sinopse && genero && duracao && data && hora && preco && local){
-                const evento = new Evento(codigo, nome, sinopse, genero, duracao, data, hora, preco, local);
+            const imagem = dados.imagem;
+            if(codigo && codigo > 0 && nome && sinopse && genero && duracao && data && hora && preco && local && imagem){
+                const evento = new Evento(codigo, nome, sinopse, genero, duracao, data, hora, preco, local, imagem);
                 evento.atualizar().then(() =>{
                     resposta.status(200);
                     resposta.json({
@@ -141,9 +143,9 @@ export default class EventoControle {
     consultar(requisicao, resposta){
         resposta.type('application/json');
         if(requisicao.method === "GET" ){
-            const nome = requisicao.params.nome;
+            const id = requisicao.params.codigo;
             const evento = new Evento(0);
-            evento.consultar(nome).then((eventos)=>{
+            evento.consultar(id).then((eventos)=>{
                 resposta.status(200);
                 resposta.json(eventos);
             }).catch((erro) =>{
